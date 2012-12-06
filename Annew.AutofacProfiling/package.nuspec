@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Annew.AutofacProfiling</id>
+    <description>Allows profiling of Autofac component resolutions.</description>
+    <projectUrl>http://andrew-t-moore.github.com/Annew.AutofacProfiling/</projectUrl>
+    <version>0.0.2</version>
+    <authors>Andrew Moore</authors>
+    <dependencies>
+      <dependency id="Autofac" version="2.6.3.862" />
+      <dependency id="MiniProfiler" version="2.0.2"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Debug\Annew.AutofacProfiling.dll" target="lib" />
+    <file src="bin\Debug\Annew.AutofacProfiling.pdb" target="lib" />
+  </files>
+</package>
