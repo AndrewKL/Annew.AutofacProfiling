@@ -17,7 +17,10 @@ namespace Annew.AutofacProfiling {
 
                 operationBeginningEventArgs.ResolveOperation.InstanceLookupBeginning += (sender, args) => {
                     var step = MiniProfiler.Current.Step("Resolving: " + args.InstanceLookup.ComponentRegistration.Target.Activator.LimitType.Name);
-                    args.InstanceLookup.InstanceLookupEnding += (o, eventArgs) => step.Dispose();
+                    args.InstanceLookup.InstanceLookupEnding += (o, eventArgs) => {
+                        if (step != null)
+                            step.Dispose();
+                    }
                 };
             };
         }
