@@ -20,7 +20,7 @@ namespace Annew.AutofacProfiling {
                     args.InstanceLookup.InstanceLookupEnding += (o, eventArgs) => {
                         if (step != null)
                             step.Dispose();
-                    }
+                    };
                 };
             };
         }
