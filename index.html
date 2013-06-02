@@ -1,37 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Annew.autofacprofiling : " />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Annew.autofacprofiling by andrew-t-moore</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Annew.autofacprofiling</title>
   </head>
-
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/andrew-t-moore/Annew.AutofacProfiling">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/andrew-t-moore/Annew.AutofacProfiling/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/andrew-t-moore/Annew.AutofacProfiling/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/andrew-t-moore/Annew.AutofacProfiling">View on GitHub</a>
+    <div class="wrapper">
 
-          <h1 id="project_title">Annew.autofacprofiling</h1>
-          <h2 id="project_tagline"></h2>
+      <section>
+        <div id="title">
+          <h1>Annew.autofacprofiling</h1>
+          <p></p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/andrew-t-moore">andrew-t-moore</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/andrew-t-moore/Annew.AutofacProfiling/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/andrew-t-moore/Annew.AutofacProfiling/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>Annew.AutofacProfiling</h1>
+        <h1>
+<a name="annewautofacprofiling" class="anchor" href="#annewautofacprofiling"><span class="octicon octicon-link"></span></a>Annew.AutofacProfiling</h1>
 
 <p>This is a really tiny library that lets you profile Autofac resolutions in MiniProfiler. In short - every time Autofac resolves a component, you get a line in MiniProfiler telling you how long it took. Very handy if you're having trouble tracking down performance issues in apps.</p>
 
@@ -39,33 +47,29 @@
 
 <ol>
 <li>Install Annew.AutofacProfiling via the NuGet package manager console.</li>
-<li>Add a call to <code>CreateProfiledContainer()</code> when you build your container, as below:</li>
+<li>Add a call to <code>EnableProfiling()</code> when you build your container, as below:</li>
 </ol><div class="highlight"><pre><span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ContainerBuilder</span><span class="p">();</span>
 <span class="c1">// Your registrations go here.</span>
-<span class="kt">var</span> <span class="n">container</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="n">Build</span><span class="p">().</span><span class="n">CreateProfiledContainer</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">container</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+<span class="c1">// &lt;magic&gt;</span>
+<span class="n">container</span><span class="p">.</span><span class="n">EnableProfiling</span><span class="p">();</span>
+<span class="c1">//&lt;/magic&gt;</span>
 <span class="n">DependencyResolver</span><span class="p">.</span><span class="n">SetResolver</span><span class="p">(</span><span class="k">new</span> <span class="n">AutofacDependencyResolver</span><span class="p">(</span><span class="n">container</span><span class="p">));</span>
 </pre></div>
 
-<p>... and that's it.</p>
+<p>... and that's it. So long as you've set up MiniProfiler, you'll now get profiling for each component that Autofac resolves, even if it's buried deep down in the object graph.</p>
 
-<h2>Dependencies:</h2>
+<h2>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies:</h2>
 
 <ul>
 <li>Autofac</li>
 <li>MiniProfiler</li>
 </ul>
       </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Annew.autofacprofiling maintained by <a href="https://github.com/andrew-t-moore">andrew-t-moore</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
